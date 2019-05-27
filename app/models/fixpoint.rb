@@ -7,4 +7,8 @@ class Fixpoint < ApplicationRecord
 
   validates :latitude, presence: true
   validates :longitude, presence: true
+
+  validates :category, presence: true
+  validates :user, presence: true
+
 end
