@@ -1,8 +1,6 @@
 class Vote < ApplicationRecord
-  belongs_to :fixpoint
   belongs_to :user
-
-  validates :user, presence: true
-  validates :fixpoint, presence: true
-
+  belongs_to :fixpoint
+  
+  validates :user, uniqueness: { scope: :fixpoint }
 end
