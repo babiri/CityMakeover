@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_161309) do
+ActiveRecord::Schema.define(version: 2019_05_27_165714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "categories", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-<<<<<<< HEAD
-=======
-    t.string "name"
->>>>>>> b0d8b5e723d01affdc16ef638479f420dd54aadc
-  end
 
   create_table "fixpoints", force: :cascade do |t|
     t.boolean "fixed"
@@ -32,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_05_27_161309) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category"
   end
 
   create_table "photos", force: :cascade do |t|
