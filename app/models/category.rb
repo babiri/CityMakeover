@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   has_many :fixpoints
 
-  validates :name, uniqueness: true, presence: true
+  validates :name, uniqueness: true, presence: true,
 
 end
