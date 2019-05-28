@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
   belongs_to :fixpoint
 
-  validates :photo, presence: true
+  validates :url, presence: true
 end
