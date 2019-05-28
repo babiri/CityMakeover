@@ -3,7 +3,7 @@ class FixpointsController < ApplicationController
   before_action :set_fixpoint, only: [:show, :edit, :update]
 
 
-  def home
+  def index
     @fixpoints = Fixpoint.all
   end
 
