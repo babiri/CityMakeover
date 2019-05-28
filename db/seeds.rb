@@ -7,6 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Cleaning database"
+
+User.destroy_all
+Fixpoint.destroy_all
+Photo.destroy_all
+
 puts 'Creating fake users...'
 
 10.times do
