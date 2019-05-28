@@ -1,5 +1,7 @@
 class Photo < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
   belongs_to :fixpoint
 
-  validates :photo, presence: true
+  validates :url, presence: true
 end
