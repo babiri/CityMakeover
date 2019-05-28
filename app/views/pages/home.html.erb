@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
+<ul>
+  <% @fixpoints.each do |fixpoint| %>
+  <%= fixpoint.latitude %>
+  <%= fixpoint.longitude %>
+ <% end %>
+</ul>
+
 
