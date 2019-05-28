@@ -7,6 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Cleaning database"
+Photo.destroy_all
+Fixpoint.destroy_all
+User.destroy_all
+
+
 puts 'Creating fake users...'
 
 10.times do
@@ -43,25 +48,25 @@ fixpoint10.save!
 puts "finishing creating fake locations"
 
 puts "creating fake photos"
-photo1 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo1 = Photo.new(url: "photos/garbage1.jpg", fixpoint: Fixpoint.all.sample)
 photo1.save!
-photo2 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo2 = Photo.new(url: "photos/garbage2.jpg", fixpoint: Fixpoint.all.sample)
 photo2.save!
-photo3 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo3 = Photo.new(url: "photos/graffiti1.jpg", fixpoint: Fixpoint.all.sample)
 photo3.save!
-photo4 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo4 = Photo.new(url: "photos/graffiti2.jpg", fixpoint: Fixpoint.all.sample)
 photo4.save!
-photo5 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo5 = Photo.new(url: "photos/road1.jpg", fixpoint: Fixpoint.all.sample)
 photo5.save!
-photo6 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo6 = Photo.new(url: "photos/road2.jpg", fixpoint: Fixpoint.all.sample)
 photo6.save!
-photo7 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo7 = Photo.new(url: "photos/wall1.jpg", fixpoint: Fixpoint.all.sample)
 photo7.save!
-photo8 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo8 = Photo.new(url: "photos/wall2.jpg", fixpoint: Fixpoint.all.sample)
 photo8.save!
-photo9 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo9 = Photo.new(url: "photos/wires1.jpg", fixpoint: Fixpoint.all.sample)
 photo9.save!
-photo10 = Photo.new(photo: "photos/garbage1.jpeg", fixpoint: Fixpoint.all.sample)
+photo10 = Photo.new(url: "photos/wires2.jpg", fixpoint: Fixpoint.all.sample)
 photo10.save!
 puts "finishing creating fake photos"
 
