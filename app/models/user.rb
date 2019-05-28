@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :fixpoints
   has_many :votes
 
-  validates :name, presence: true
+  #validates :name, presence: true
 
 end

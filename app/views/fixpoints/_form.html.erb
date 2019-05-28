@@ -1,4 +1,11 @@
-<%= simple_form_for fixpoint do |f| %>
-  <%= f.input :name %>
-  <%= f.submit button_label %>
+<%= simple_form_for @fixpoint do |f| %>
+
+  <%= f.simple_fields_for :photos do |p| %>
+      <%= p.label :photo %>
+      <%= p.file_field :url %>
+      <%#= p.input :url_cache, as: :hidden %>
+      <%= p.input :fixed %>
+  <% end %>
+
+  <%= f.submit %>
 <% end %>
