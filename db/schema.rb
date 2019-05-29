@@ -10,22 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_05_29_103159) do
-
+ActiveRecord::Schema.define(version: 2019_05_29_140934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-
   create_table "fixpoint_attachments", force: :cascade do |t|
     t.string "photo"
     t.bigint "fixpoint_id"
-    t.boolean "fixed"
+    t.boolean "fixed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fixpoint_id"], name: "index_fixpoint_attachments_on_fixpoint_id"
