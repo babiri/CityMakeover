@@ -12,8 +12,8 @@ class FixpointsController < ApplicationController
       {
         lat: fixpoint.latitude,
         lng: fixpoint.longitude,
-        # infoWindow: render_to_string(partial: "infowindow", locals: { fixpoint: fixpoint })
-        image_url: helpers.asset_url('/app/assets/images/placeholder1.svg')
+        infoWindow: render_to_string(partial: "infowindow", locals: { fixpoint: fixpoint }),
+        image_url: url_for_marker(fixpoint)
       }
     end
   end
@@ -54,5 +54,15 @@ class FixpointsController < ApplicationController
 
   def fixpoint_params
     params.require(:fixpoint).permit(:longitude, :latitude, :fix_date, :fixed)
+  end
+
+  def url_for_marker(fixpoint)
+    if fixpoint.user == current_user
+      helpers.asset_url('placeholder3.png')
+    elsif fixpoint.fixed? == false
+      helpers.asset_url('placeholder1.png')
+    else
+      helpers.asset_url('placeholder2.png')
+    end
   end
 end
