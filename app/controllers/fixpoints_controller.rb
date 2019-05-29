@@ -20,10 +20,10 @@ class FixpointsController < ApplicationController
 
     respond_to do |format|
       if @fixpoint.save
-        params[:fixpoint_attachments]['avatar'].each do |a|
-          @fixpoint_attachment = @fixpoint.fixpoint_attachments.create!(:avatar => a,     :fixpoint_id => @fixpoint.id)
+        params[:fixpoint_attachments]['photo'].each do |ph|
+          @fixpoint_attachment = @fixpoint.fixpoint_attachments.create!(photo: ph, fixpoint_id: @fixpoint.id)
         end
-       format.html { redirect_to @fixpoint, notice: 'fixpoint was successfully     created.' }
+       format.html { redirect_to @fixpoint, notice: 'fixpoint was successfully created.' }
      else
        format.html { render action: 'new' }
      end

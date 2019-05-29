@@ -1,10 +1,10 @@
 <%= simple_form_for @fixpoint do |f| %>
+  <%= f.input :fixed, as: :hidden, value: 'false' %>
 
-  <%= f.simple_fields_for :photos do |p| %>
-      <%= p.label :photo %>
-      <%= p.file_field :url %>
-      <%#= p.input :url_cache, as: :hidden %>
-      <%= p.input :fixed %>
+  <%= f.simple_fields_for :fixpoint_attachments do |p| %>
+      <%= p.label :photos %>
+      <%= p.file_field :url, multiple: true, name: "fixpoint_attachments[photo][]" %>
+
   <% end %>
 
   <%= f.submit %>
