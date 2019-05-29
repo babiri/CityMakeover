@@ -1,6 +1,6 @@
 class Fixpoint < ApplicationRecord
   has_many :votes
-  has_many :photos
+  has_many :fixpoint_attachments
 
   belongs_to :user
 
@@ -12,5 +12,4 @@ class Fixpoint < ApplicationRecord
   # validates :category, presence: true
   validates :user, presence: true
 
-  accepts_nested_attributes_for :photos
 end
