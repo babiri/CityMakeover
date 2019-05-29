@@ -12,7 +12,8 @@ class FixpointsController < ApplicationController
       {
         lat: fixpoint.latitude,
         lng: fixpoint.longitude,
-        infoWindow: render_to_string(partial: "infowindow", locals: { fixpoint: fixpoint })
+        # infoWindow: render_to_string(partial: "infowindow", locals: { fixpoint: fixpoint })
+        image_url: helpers.asset_url('/app/assets/images/placeholder1.svg')
       }
     end
   end
