@@ -1,8 +1,9 @@
 class FixpointsController < ApplicationController
   before_action :set_fixpoint, only: [:show, :edit, :update]
 
+
   def index
-    @fixpoints = Fixpoint.all
+    @fixpoints = policy_scope(Fixpoint)
   end
 
   def show
@@ -16,6 +17,9 @@ class FixpointsController < ApplicationController
 
   def create
     @fixpoint = Fixpoint.new(fixpoint_params)
+
+    authorize @fixpoint
+
     @fixpoint.user = current_user
 
     respond_to do |format|
