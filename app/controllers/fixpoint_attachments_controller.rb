@@ -33,8 +33,7 @@ class FixpointAttachmentsController < ApplicationController
 
   def destroy
     @fixpoint_attachment.destroy
-
-    redirect_to fixpoint_show_path
+    redirect_to fixpoint_path(@fixpoint)
   end
 
 

@@ -3,10 +3,12 @@
 
 <h2><%= @fixpoint.fixpoint_attachments.count %></h2>
 
+<%= link_to "Add photo", new_fixpoint_fixpoint_attachment_path(@fixpoint) %>
+
 <% @fixpoint.fixpoint_attachments.each do |fp_attch| %>
   <%= cl_image_tag fp_attch.photo, height: 300, width: 400, crop: :fill %>
   <%= link_to "change photo", edit_fixpoint_fixpoint_attachment_path(fp_attch.fixpoint, fp_attch) %>
-  <%= link_to "delete photo", fixpoint_fixpoint_attachment_path(fp_attch.fixpoint), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to "delete photo", fixpoint_fixpoint_attachment_path(fp_attch.fixpoint, fp_attch), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
-<%= link_to "Add photo", new_fixpoint_fixpoint_attachment_path(@fixpoint) %>
+
