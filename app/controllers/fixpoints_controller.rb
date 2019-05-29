@@ -6,34 +6,28 @@ class FixpointsController < ApplicationController
   end
 
   def show
+    @fixpoint_attachments = @fixpoint.fixpoint_attachments.all
   end
 
   def new
     @fixpoint = Fixpoint.new
-    @photo = @fixpoint.photos.build
+    @fixpoint_attachment = @fixpoint.fixpoint_attachments.build
   end
 
   def create
     @fixpoint = Fixpoint.new(fixpoint_params)
     @fixpoint.user = current_user
-    # if @fixpoint.save
-    #   redirect_to @fixpoint
-    # else
-    #   render :new
-    # end
 
     respond_to do |format|
-
-     if @fixpoint.save
-      params[:photos]['url'].each do |a|
-        @photo = @fixpoint.photos.create!(:url => a)
-      end
-      format.html { redirect_to @fixpoint, notice: 'Post was successfully created.' }
+      if @fixpoint.save
+        params[:fixpoint_attachments]['avatar'].each do |a|
+          @fixpoint_attachment = @fixpoint.fixpoint_attachments.create!(:avatar => a,     :fixpoint_id => @fixpoint.id)
+        end
+       format.html { redirect_to @fixpoint, notice: 'fixpoint was successfully     created.' }
      else
-       format.html { render 'new' }
-      end
+       format.html { render action: 'new' }
+     end
     end
-
   end
 
   def edit
@@ -54,6 +48,6 @@ class FixpointsController < ApplicationController
   end
 
   def fixpoint_params
-    params.require(:fixpoint).permit(:longitude, :latitude, :fix_date, :fixed, photos_attributes: [:id, :fixpoint_id, :url, :fixed])
+    params.require(:fixpoint).permit(:longitude, :latitude, :fix_date, :fixed, fixpoint_attachments_attributes: [:id, :fixpoint_id, :photo, :fixed])
   end
 end
