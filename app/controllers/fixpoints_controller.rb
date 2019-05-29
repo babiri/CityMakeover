@@ -11,7 +11,7 @@ class FixpointsController < ApplicationController
       {
         lat: fixpoint.latitude,
         lng: fixpoint.longitude,
-        # infoWindow: render_to_string(partial: "infowindow", locals: { fixpoint: fixpoint })
+        infoWindow: render_to_string(partial: "infowindow", locals: { fixpoint: fixpoint })
       }
     end
   end
