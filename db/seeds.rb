@@ -9,12 +9,19 @@
 puts "Cleaning database"
 puts 'Creating fake users...'
 
+fermin = User.new(
+  name: 'Fermni' ,
+  email: 'fermni@gmail.com',
+  password: "123456"
+)
+fermin.save!
+
 10.times do
   user = User.new(
     name: Faker::Name.name ,
     email: Faker::Internet.email,
     password: "123456"
-    )
+  )
   user.save!
 end
 puts "finished creating fake users"
@@ -66,4 +73,3 @@ photo10.save!
 puts "finishing creating fake photos"
 
 # puts "creating fake "
-
