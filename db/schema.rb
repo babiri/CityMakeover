@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_113801) do
+ActiveRecord::Schema.define(version: 2019_05_29_140934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "fixpoint_attachments", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "fixpoint_id"
+    t.boolean "fixed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fixpoint_id"], name: "index_fixpoint_attachments_on_fixpoint_id"
+  end
+
   create_table "fixpoints", force: :cascade do |t|
-    t.boolean "fixed"
+    t.boolean "fixed", default: false
     t.date "fix_date"
     t.float "latitude"
     t.float "longitude"
@@ -24,16 +33,8 @@ ActiveRecord::Schema.define(version: 2019_05_28_113801) do
     t.datetime "updated_at", null: false
     t.integer "category"
     t.bigint "user_id"
+    t.string "address"
     t.index ["user_id"], name: "index_fixpoints_on_user_id"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string "photo"
-    t.boolean "fixed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "fixpoint_id"
-    t.index ["fixpoint_id"], name: "index_photos_on_fixpoint_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,6 +55,6 @@ ActiveRecord::Schema.define(version: 2019_05_28_113801) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "fixpoint_attachments", "fixpoints"
   add_foreign_key "fixpoints", "users"
-  add_foreign_key "photos", "fixpoints"
 end
