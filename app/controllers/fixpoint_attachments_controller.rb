@@ -1,5 +1,5 @@
 class FixpointAttachmentsController < ApplicationController
-  before_action :find_fixpoint_attch, only: [ :edit, :update, :destroy ]
+  before_action :find_fixpoint_attch, only: [:edit, :update, :destroy]
   before_action :set_fixpoint
 
   def new
@@ -32,7 +32,11 @@ class FixpointAttachmentsController < ApplicationController
   end
 
   def destroy
+    @fixpoint_attachment.destroy
+
+    redirect_to fixpoint_show_path
   end
+
 
   private
 
