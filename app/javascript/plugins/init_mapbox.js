@@ -10,6 +10,7 @@ const buildMap = () => {
   });
 };
 
+
 const addMarkersToMap = (map, markers) => {
 
   markers.forEach((marker) => {
@@ -44,9 +45,9 @@ const initMapbox = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
+    map.addControl(new mapboxgl.NavigationControl());
   }
 };
 
-
-
 export { initMapbox };
+
