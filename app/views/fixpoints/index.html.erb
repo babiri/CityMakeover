@@ -1,10 +1,18 @@
+
 <div
+  class="a"
   id="map"
   style="width: 100%;
   height: 100%;
   position: absolute"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
-
+>
+</div>
+<div class="plus_button">
+  <%= link_to '+', new_fixpoint_path %>
+</div>
+<div class="b">
+  <%= render 'shared/sidebar' %>
+</div>
 

@@ -11,6 +11,7 @@ const buildMap = () => {
   });
 };
 
+
 const addMarkersToMap = (map, markers) => {
 
   markers.forEach((marker) => {
@@ -46,9 +47,9 @@ const initMapbox = () => {
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
+    map.addControl(new mapboxgl.NavigationControl());
   }
 };
 
-
-
 export { initMapbox };
+

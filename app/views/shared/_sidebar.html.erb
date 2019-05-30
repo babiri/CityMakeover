@@ -1,0 +1,47 @@
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <div>
+    <button onclick="w3_close()" class="w3-bar-item w3-large">X</button>
+  </div>
+  <div class="sidebar-title">
+    <h2>City Makeover</h2>
+  </div>
+  <div class="form">
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="optradio">To Fix
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="optradio">Fixed
+      </label>
+    </div>
+  </div>
+  <% if user_signed_in?%>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+    <button class="login-btn btn btn-info btn-lg btn-block" onclick="">Logout</button>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path do %>
+    <button class="login-btn btn btn-info btn-lg btn-block" onclick="">Login</button>
+    <% end %>
+  <% end %>
+</div>
+
+
+<div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+</div>
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
