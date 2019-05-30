@@ -63,25 +63,25 @@ fixpoint10.save!
 puts "finishing creating fake locations"
 
 puts "creating fake photos"
-photo1 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/garbage1.jpg"), fixpoint: Fixpoint.all.sample)
+photo1 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/garbage1.jpg"), fixpoint: fixpoint1)
 photo1.save!
-photo2 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/garbage2.jpg"), fixpoint: Fixpoint.all.sample)
+photo2 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/garbage2.jpg"), fixpoint: fixpoint2)
 photo2.save!
-photo3 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/graffiti1.jpg"), fixpoint: Fixpoint.all.sample)
+photo3 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/graffiti1.jpg"), fixpoint: fixpoint3)
 photo3.save!
-photo4 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/graffiti2.jpg"), fixpoint: Fixpoint.all.sample)
+photo4 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/graffiti2.jpg"), fixpoint: fixpoint4)
 photo4.save!
-photo5 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/road1.jpg"), fixpoint: Fixpoint.all.sample)
+photo5 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/road1.jpg"), fixpoint: fixpoint5)
 photo5.save!
-photo6 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/road2.jpg"), fixpoint: Fixpoint.all.sample)
+photo6 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/road2.jpg"), fixpoint: fixpoint6)
 photo6.save!
-photo7 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wall1.jpg"), fixpoint: Fixpoint.all.sample)
+photo7 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wall1.jpg"), fixpoint: fixpoint7)
 photo7.save!
-photo8 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wall2.jpg"), fixpoint: Fixpoint.all.sample)
+photo8 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wall2.jpg"), fixpoint: fixpoint8)
 photo8.save!
-photo9 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wires1.jpg"), fixpoint: Fixpoint.all.sample)
+photo9 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wires1.jpg"), fixpoint: fixpoint9)
 photo9.save!
-photo10 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wires2.jpg"), fixpoint: Fixpoint.all.sample)
+photo10 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wires2.jpg"), fixpoint: fixpoint10)
 photo10.save!
 puts "finishing creating fake photos"
 

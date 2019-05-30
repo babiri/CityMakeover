@@ -1,21 +1,30 @@
-<div class="card-deck">
-  <% @fixpoints.each do |fixpoint| %>
-    <div class="card">
-      <%= image_tag ("photos/garbage1.jpeg")%>
-      <div class="card-body">
-        <!-- <h5 class="card-title">Card title</h5>
- -->
-        <p class="card-text"><%= fixpoint.address %></p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<div class="container">
+  <div class="row">
+    <% @fixpoints.each do |fixpoint| %>
+      <div class="col-3">
+        <div class="card-deck">
+          <div class="card_fix">
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+              <% if fixpoint.fixpoint_attachments.present? %>
+                <%= cl_image_tag fixpoint.fixpoint_attachments.first.photo %>
+              <% else %>
+                <%= image_tag('http://res.cloudinary.com/domeafay4/image/upload/v1559217010/rb3iyntwumo23d0vnapt.jpg') %>
+              <% end %>
+              <div class="card-body text-dark">
+                <p class="card-text"><%= fixpoint.category %></p>
+                <p class="card-text"><%= fixpoint.address %></p>
+                <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 <div
   id="map"
-  style="width: 100%;
-  height: 100%;
-  position: absolute"
+  style=""
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
