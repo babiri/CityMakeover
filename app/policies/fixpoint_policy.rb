@@ -1,10 +1,14 @@
 class FixpointPolicy < ApplicationPolicy
-  def create?
+  def new?
     true
   end
 
+  def create?
+    new?
+  end
+
   def update?
-    record.user == user
+    true
   end
 
   def destroy?

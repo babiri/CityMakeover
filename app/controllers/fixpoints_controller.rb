@@ -2,7 +2,6 @@ class FixpointsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_fixpoint, only: [:show, :edit, :update]
 
-
   def index
     @fixpoints = policy_scope(Fixpoint)
   end
@@ -14,6 +13,7 @@ class FixpointsController < ApplicationController
   def new
     @fixpoint = Fixpoint.new
     @fixpoint_attachment = @fixpoint.fixpoint_attachments.build
+    authorize @fixpoint
   end
 
   def create
@@ -28,7 +28,7 @@ class FixpointsController < ApplicationController
         params[:fixpoint_attachments]['photo'].each do |ph|
           @fixpoint_attachment = @fixpoint.fixpoint_attachments.create!(photo: ph, fixpoint_id: @fixpoint.id)
         end
-       format.html { redirect_to @fixpoint, notice: 'fixpoint was successfully created.' }
+       format.html { redirect_to fixpoints_path, notice: 'fixpoint was successfully created.' }
      else
        format.html { render action: 'new' }
      end
