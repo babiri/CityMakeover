@@ -24,7 +24,8 @@ puts 'Creating fake users...'
 fermin = User.new(
   name: 'Fermni' ,
   email: 'fermni@gmail.com',
-  password: "123456"
+  password: "123456",
+  admin: true
 )
 fermin.save!
 
