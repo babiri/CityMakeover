@@ -15,6 +15,8 @@ gem 'geocoder'
 
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
+gem 'bootstrap-toggle-rails'
+
 
 
 gem 'autoprefixer-rails'

@@ -19,6 +19,12 @@
       </label>
     </div>
   </div>
+
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">mapa</label>
+    <label for="">lista</label>
+  </div>
+
   <% if user_signed_in?%>
     <%= link_to destroy_user_session_path, method: :delete do %>
     <button class="login-btn btn btn-info btn-lg btn-block" onclick="">Logout</button>
@@ -28,6 +34,8 @@
     <button class="login-btn btn btn-info btn-lg btn-block" onclick="">Login</button>
     <% end %>
   <% end %>
+
+
 </div>
 
 
