@@ -26,11 +26,13 @@ class Fixpoint < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode, :reverse_geocode
 
+  #validates :fixpoint_attachments, :length => { :minimum => 1 }
+  validates_associated :fixpoint_attachments, message: "photo missing"
   # validates :latitude, presence: true
   # validates :longitude, presence: true
 
 
-  # validates :category, presence: true
+  validates :category, presence: true
   validates :user, presence: true
 
 end
