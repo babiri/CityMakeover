@@ -1,5 +1,4 @@
-<!--
-<div class="container">
+<div id="fixpoints-list" class="d-none container">
   <div class="row">
     <% @fixpoints.each do |fixpoint| %>
       <div class="col-3">
@@ -22,8 +21,7 @@
       </div>
     <% end %>
   </div>
-</div> -->
-
+</div>
 <div
   class="a"
   id="map"
@@ -31,13 +29,14 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
-
-
-
 <div class="plus_button">
   <%= link_to '+', new_fixpoint_path %>
+</div>
+<div class="toggle_button">
+  <%= link_to "#", id: "toggle-list" do %>
+    <i class="fas fa-toggle-off"></i>
+  <% end %>
 </div>
 <div class="b">
   <%= render 'shared/sidebar' %>
 </div>
-
