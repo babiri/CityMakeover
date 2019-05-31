@@ -20,9 +20,14 @@ if(document.querySelector(".fixpoints.index")) {
   // 3. change the class of the toggle button to on
 
   toggleButton.addEventListener("click", (event) => {
-    map.classList.add("d-none");
-    fixpointsList.classList.remove("d-none");
-    toggleIcon.classList.remove("fa-toggle-off");
-    toggleIcon.classList.add("fa-toggle-on");
+    // map.classList.add("d-none");
+    // fixpointsList.classList.remove("d-none");
+    // toggleIcon.classList.remove("fa-toggle-off");
+    // toggleIcon.classList.add("fa-toggle-on");
+
+    map.classList.toggle("d-none");
+    fixpointsList.classList.toggle("d-none");
+    toggleIcon.classList.toggle("fa-toggle-off");
+    toggleIcon.classList.toggle("fa-toggle-on");
   });
 }
