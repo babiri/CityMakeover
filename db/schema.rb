@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_143108) do
+ActiveRecord::Schema.define(version: 2019_05_31_113618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,15 +37,6 @@ ActiveRecord::Schema.define(version: 2019_05_29_143108) do
     t.index ["user_id"], name: "index_fixpoints_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.string "url"
-    t.boolean "fixed", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "fixpoint_id"
-    t.index ["fixpoint_id"], name: "index_photos_on_fixpoint_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -67,5 +58,4 @@ ActiveRecord::Schema.define(version: 2019_05_29_143108) do
 
   add_foreign_key "fixpoint_attachments", "fixpoints"
   add_foreign_key "fixpoints", "users"
-  add_foreign_key "photos", "fixpoints"
 end
