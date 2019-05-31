@@ -9,7 +9,7 @@
   dependencies:
     "@babel/highlight" "^7.0.0"
 
-"@babel/core@^7.3.4":
+"@babel/core@^7.3.3", "@babel/core@^7.3.4":
   version "7.4.5"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.4.5.tgz#081f97e8ffca65a9b4b0fdc7e274e703f000c06a"
   integrity sha512-OvjIh6aqXtlsA8ujtGKfC7LYWksYSX8yQcM8Ay3LuvVeQ63lcOKgoZWVqcpFwkd29aYU9rVx7jxhfhiEDV9MZA==
@@ -4388,6 +4388,13 @@ md5.js@^1.3.4:
     hash-base "^3.0.0"
     inherits "^2.0.1"
     safe-buffer "^5.1.2"
+
+mdbootstrap@^4.8.2:
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/mdbootstrap/-/mdbootstrap-4.8.2.tgz#d98b89a6a4ef4bbbcd3a7919d90f50bb421c7061"
+  integrity sha512-fpunZ4CojFMvnZkWb6bFOq94pnv/tH8Vpnv+AZMydidWXsMq+EArlktrCTD6h7uD8swtw1kgE7ip14aoTBLAuA==
+  dependencies:
+    "@babel/core" "^7.3.3"
 
 mdn-data@~1.1.0:
   version "1.1.4"

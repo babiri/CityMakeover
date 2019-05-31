@@ -8,5 +8,7 @@
     <p class="card-text"><%= fixpoint.category %></p>
     <p class="card-text"><%= fixpoint.address %></p>
     <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
+  <button type="button" class="btn btn-link"> <%= link_to "Add photos", edit_fixpoint_path(fixpoint.id) %> </button>
+
 
 </div>
