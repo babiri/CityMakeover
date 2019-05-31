@@ -1,10 +1,8 @@
 <%= simple_form_for @fixpoint do |f| %>
   <%= f.input :category, :as => :select, collection: Fixpoint.categories.keys.to_a %>
   <%= f.input :address %>
-
   <%= f.simple_fields_for :fixpoint_attachments, FixpointAttachment.new do |p| %>
-      <%= p.file_field :photo, multiple: true, name: "fixpoint_attachments[photo][]", label: "Photos" %>
+    <%= p.file_field :photo, multiple: true, name: "fixpoint_attachments[photo][]", label: "Photos" %>
   <% end %>
-
   <%= f.button :submit %>
 <% end %>
