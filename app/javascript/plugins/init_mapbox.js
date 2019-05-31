@@ -30,6 +30,7 @@ const addMarkersToMap = (map, markers) => {
     new mapboxgl.Marker(element)
       .setLngLat([marker.lng, marker.lat])
       .setPopup(popup)
+
       .addTo(map);
   });
 };

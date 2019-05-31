@@ -24,6 +24,13 @@ class Fixpoint < ApplicationRecord
 
   geocoded_by :address # add geocode by IP
   reverse_geocoded_by :latitude, :longitude
+
+  reverse_geocoded_by :latitude, :longitude do |fixp, results|
+    if geo = results.first
+      fixp.address = [geo.street, geo.house_number].join(', ')
+    end
+  end
+
   after_validation :geocode, :reverse_geocode
 
   #validates :fixpoint_attachments, :length => { :minimum => 1 }
