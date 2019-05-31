@@ -1,6 +1,12 @@
 <div>
-  Created <%= fixpoint.created_at %>
-  <%= fixpoint.category %>
-  <%= fixpoint.address %>
-  <%= link_to 'Add photo', new_fixpoint_path %>
+  <% if fixpoint.fixpoint_attachments.present? %>
+    <%= cl_image_tag fixpoint.fixpoint_attachments.first.photo %>
+  <% else %>
+    <%= image_tag('http://res.cloudinary.com/domeafay4/image/upload/v1559217010/rb3iyntwumo23d0vnapt.jpg') %>
+  <% end %>
+  <div class="card-body text-dark">
+    <p class="card-text"><%= fixpoint.category %></p>
+    <p class="card-text"><%= fixpoint.address %></p>
+    <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
+
 </div>
