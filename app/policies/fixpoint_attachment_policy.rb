@@ -1,8 +1,4 @@
-class FixpointPolicy < ApplicationPolicy
-  def show?
-    true
-  end
-
+class FixpointAttachmentPolicy < ApplicationPolicy
   def new?
     true
   end
@@ -11,12 +7,16 @@ class FixpointPolicy < ApplicationPolicy
     new?
   end
 
+  def edit?
+    true
+  end
+
   def update?
     true
   end
 
   def destroy?
-    record.user == user
+    true
   end
 
   class Scope < Scope

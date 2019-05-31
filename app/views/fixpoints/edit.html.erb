@@ -1,9 +1,7 @@
-<%= simple_form_for @fixpoint do |f| %>
-
-
-  <%= f.simple_fields_for :fixpoint_attachments, FixpointAttachment.new do |p| %>
-      <%= p.file_field :photo, multiple: true, name: "fixpoint_attachments[photo][]", label: "Photos" %>
-  <% end %>
-
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+      <%= render "fixpoint_attachments/form" %>
+    </div>
+  </div>
+</div>
