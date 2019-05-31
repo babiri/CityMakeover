@@ -18,6 +18,7 @@ class FixpointsController < ApplicationController
 
   def show
     @fixpoint_attachments = @fixpoint.fixpoint_attachments.all
+    authorize @fixpoint
   end
 
   def new
@@ -41,6 +42,7 @@ class FixpointsController < ApplicationController
   end
 
   def edit
+    authorize @fixpoint
   end
 
   def update

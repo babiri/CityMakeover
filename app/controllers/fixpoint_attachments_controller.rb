@@ -4,10 +4,12 @@ class FixpointAttachmentsController < ApplicationController
 
   def new
     @fixpoint_attachment = FixpointAttachment.new
+    authorize @fixpoint_attachment
   end
 
   def create
     @fixpoint_attachment = FixpointAttachment.new(fixpoint_attachment_params)
+    authorize @fixpoint_attachment
 
     respond_to do |format|
       if @fixpoint_attachment.save
@@ -19,12 +21,15 @@ class FixpointAttachmentsController < ApplicationController
   end
 
   def edit
+    authorize @fixpoint_attachment
   end
 
   def update
+  authorize @fixpoint_attachment
+
   respond_to do |format|
     if @fixpoint_attachment.update(fixpoint_attachment_params)
-      format.html { redirect_to edit_fixpoint_path(@fixpoint), notice: 'fixpoint attachment was successfully updated' }
+      format.html { redirect_to fixpoint_path(@fixpoint), notice: 'fixpoint attachment was successfully updated' }
     else
       format.html { render :edit }
     end
@@ -32,7 +37,10 @@ class FixpointAttachmentsController < ApplicationController
   end
 
   def destroy
+    authorize @fixpoint_attachment
+
     @fixpoint_attachment.destroy
+
     redirect_to fixpoint_path(@fixpoint)
   end
 
