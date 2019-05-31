@@ -1,47 +1,67 @@
 
 <!-- Sidebar -->
-<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-  <div>
-    <button onclick="w3_close()" class="w3-bar-item w3-large">X</button>
-  </div>
-  <div class="sidebar-title">
-    <h2>City Makeover</h2>
-  </div>
-  <div class="form">
-    <div class="form-check">
-      <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optradio">To Fix
-      </label>
+<div class="sidebar w3-sidebar w3-bar-block w3-border-right" style="display: none" id="mySidebar">
+  <div class="sidebar-inner-container">
+    <button type="button" class="close" aria-label="Close" onclick="sidebarClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div class="sidebar-title">
+      <h2>City Makeover</h2>
     </div>
-    <div class="form-check">
-      <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optradio">Fixed
-      </label>
-    </div>
-  </div>
-  <% if user_signed_in?%>
-    <%= link_to destroy_user_session_path, method: :delete do %>
-    <button class="login-btn btn btn-info btn-lg btn-block" onclick="">Logout</button>
-    <% end %>
-  <% else %>
-    <%= link_to new_user_session_path do %>
-    <button class="login-btn btn btn-info btn-lg btn-block" onclick="">Login</button>
-    <% end %>
-  <% end %>
-</div>
+
+    <div class="form">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio">To Fix
+        </label>
+      </div>
+
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio">Fixed
+        </label>
+      </div>
 
 
-<div class="w3-teal">
-  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio">My Fixpoints
+        </label>
+      </div>
+    </div>
+
+    <div class="bottom-area">
+      <label class="switch">
+        <input class="switch-input" type="checkbox" />
+        <span class="switch-label" data-on="Map" data-off="List"></span>
+        <span class="switch-handle"></span>
+      </label>
+
+      <% if user_signed_in?%>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'login-btn btn btn-primary btn-lg btn-block' do %>
+          Logout
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path, class: "login-btn btn btn-primary btn-lg btn-block" do %>
+          Login
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+<button class="sidebar-burger btn btn-primary" id="burger" onclick="sidebarOpen()">☰</button>
 
 <script>
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
+function sidebarOpen() {
+  document.getElementById("mySidebar").style.display = "flex";
+  document.getElementById("burger").style.display = "none";
 }
 
-function w3_close() {
+function sidebarClose() {
   document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("burger").style.display = "block";
 }
 </script>
 
