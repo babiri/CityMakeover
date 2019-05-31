@@ -1,3 +1,4 @@
+<!--
 <div class="container">
   <div class="row">
     <% @fixpoints.each do |fixpoint| %>
@@ -21,10 +22,22 @@
       </div>
     <% end %>
   </div>
-</div>
+</div> -->
+
 <div
+  class="a"
   id="map"
   style=""
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+
+
+
+<div class="plus_button">
+  <%= link_to '+', new_fixpoint_path %>
+</div>
+<div class="b">
+  <%= render 'shared/sidebar' %>
+</div>
+
