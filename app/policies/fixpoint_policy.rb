@@ -17,7 +17,7 @@ class FixpointPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where.not(latitude: nil, longitude: nil)
     end
   end
 end

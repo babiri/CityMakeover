@@ -4,7 +4,16 @@ class FixpointsController < ApplicationController
 
   def index
     @fixpoints = policy_scope(Fixpoint)
-    @fixpoints = Fixpoint.where.not(latitude: nil, longitude: nil)
+    if params[:state]
+      if params[:state] == "fixed"
+        @fixpoints = policy_scope(Fixpoint).where(fixed: true)
+      elsif params[:state] == "not-fixed"
+        @fixpoints = policy_scope(Fixpoint).where(fixed: false)
+      elsif params[:state] == "my-fixes"
+        @fixpoints = current_user.fixpoints.where.not(latitude: nil, longitude: nil)
+      end
+
+    end
 
     @markers = @fixpoints.map do |fixpoint|
       {
@@ -35,9 +44,9 @@ class FixpointsController < ApplicationController
       save_photos if params[:fixpoint_attachments]
 
       redirect_to fixpoints_path, notice: 'fixpoint was successfully created.'
-     else
-       render action: 'new'
-     end
+    else
+      render action: 'new'
+    end
   end
 
   def edit
@@ -49,6 +58,18 @@ class FixpointsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def fixed
+    @fixpoints = policy_scope(Fixpoint).where()
+
+    render :index
+  end
+
+  def to_fix
+    @fixpoints = policy_scope(Fixpoint).where()
+
+    render :index
   end
 
   private
