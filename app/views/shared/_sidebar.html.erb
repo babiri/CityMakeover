@@ -1,43 +1,34 @@
-
 <!-- Sidebar -->
 <div class="sidebar w3-sidebar w3-bar-block w3-border-right" style="display: none" id="mySidebar">
   <div class="sidebar-inner-container">
     <button type="button" class="close" aria-label="Close" onclick="sidebarClose()">
       <span aria-hidden="true">&times;</span>
     </button>
-
     <div class="sidebar-title">
       <h2>City Makeover</h2>
     </div>
-
     <div class="form">
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optradio">To Fix
+          <%= link_to "fixed", fixpoints_path(state: "fixed") %>
         </label>
       </div>
-
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optradio">Fixed
+          <%= link_to "Not fixed", fixpoints_path(state: "not-fixed") %>
         </label>
       </div>
-
-
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optradio">My Fixpoints
+          <%= link_to "my fixes", fixpoints_path(state: "my-fixes") %>
         </label>
       </div>
     </div>
-
     <div class="bottom-area">
      <!--  <label class="switch">
         <input class="switch-input" type="checkbox" />
         <span class="switch-label" data-on="Map" data-off="List"></span>
         <span class="switch-handle"></span>
-      </label> -->
-
       <% if user_signed_in?%>
         <%= link_to destroy_user_session_path, method: :delete, class: 'login-btn btn btn-primary btn-lg btn-block' do %>
           Logout
@@ -50,18 +41,15 @@
     </div>
   </div>
 </div>
-
 <button class="sidebar-burger btn btn-primary" id="burger" onclick="sidebarOpen()">☰</button>
-
 <script>
-function sidebarOpen() {
-  document.getElementById("mySidebar").style.display = "flex";
-  document.getElementById("burger").style.display = "none";
-}
-
-function sidebarClose() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("burger").style.display = "block";
-}
+  function sidebarOpen() {
+    document.getElementById("mySidebar").style.display = "flex";
+    document.getElementById("burger").style.display = "none";
+  }
+  
+  function sidebarClose() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("burger").style.display = "block";
+  }
 </script>
-

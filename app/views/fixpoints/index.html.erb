@@ -1,10 +1,10 @@
 <div id="fixpoints-list" class="d-none container">
   <div class="row">
-    <% @fixpoints.each do |fixpoint| %>
-      <div class="col-3">
-        <div class="card-deck">
-          <div class="card_fix">
-            <%= link_to fixpoint_path(fixpoint) do %>
+    <% if !@fixpoints.empty?  %>
+      <% @fixpoints.each do |fixpoint| %>
+        <div class="col-3">
+          <div class="card-deck">
+            <div class="card_fix">
               <div class="card border-dark mb-3" style="max-width: 18rem;">
                 <% if fixpoint.fixpoint_attachments.present? %>
                   <%= cl_image_tag fixpoint.fixpoint_attachments.first.photo %>
@@ -20,17 +20,13 @@
             <% end %>
           </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <h1>No fixpoints</h1>
     <% end %>
   </div>
 </div>
-<div
-  class="a"
-  id="map"
-  style=""
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+<%= render "map" %>
 <div class="plus_button">
   <%= link_to '+', new_fixpoint_path %>
 </div>
