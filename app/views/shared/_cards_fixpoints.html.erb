@@ -11,7 +11,7 @@
     <h3 class="card-category"><%= fixpoint.category %></h2>
     <h2 class="card-adress"><%= fixpoint.address %></h3>
   <button type="button" class="btn btn-link"> <%= link_to "Add photos", new_fixpoint_fixpoint_attachment_path(fixpoint) %> </button>
-  <div id="votes">
+  <div id="votes-map">
     <%= render "shared/votes", fixpoint: fixpoint %>
   </div>
 </div>

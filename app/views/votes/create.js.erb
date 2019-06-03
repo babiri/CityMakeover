@@ -1,8 +1,11 @@
 console.log("vote creates!!!!!!!!!!!");
 
 function refreshVotes(innerHTML) {
-  const newVotesDiv = document.getElementById('votes');
-  newVotesDiv.innerHTML = innerHTML;
+  const newVotesDivMap = document.getElementById('votes-map');
+  newVotesDivMap.innerHTML = innerHTML;
+
+  const newVotesDivList = document.getElementById('votes-list');
+  newVotesDivList.innerHTML = innerHTML;
 }
 
 
