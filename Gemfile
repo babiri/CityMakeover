@@ -10,6 +10,7 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 gem 'faker'
+gem 'bootstrap-toggle-rails'
 
 gem 'geocoder'
 

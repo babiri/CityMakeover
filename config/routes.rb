@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   resources :fixpoints, except: [:destroy] do
     resources :fixpoint_attachments, except: [:index]
-
     collection do
       get :fixed
       get :to_fix
     end
+    resources :votes, only: [:create, :destroy]
   end
 end
