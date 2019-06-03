@@ -11,10 +11,7 @@
     <p class="card-text"><%= fixpoint.address %></p>
     <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
   <button type="button" class="btn btn-link"> <%= link_to "Add photos", new_fixpoint_fixpoint_attachment_path(fixpoint) %> </button>
-  <% if user_signed_in? %>
-    <button type="button" class="btn btn-outline-primary"> <%= link_to "Upvote", fixpoint_votes_path(fixpoint), method: :post, remote: true %> </button>
-  <% end %>
   <div id="votes">
-    <% render "shared/votes", fixpoint: fixpoint %>
+    <%= render "shared/votes", fixpoint: fixpoint %>
   </div>
 </div>

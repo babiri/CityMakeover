@@ -1,1 +1,15 @@
-<%= fixpoint.votes.count %> votes
+<div>
+  <% if user_signed_in? %>
+    <% if fixpoint.votes.where(user: current_user).any? %>
+      <button type="button" class="btn btn-outline-primary"> <%= link_to "Downvote", fixpoint_vote_path(fixpoint, fixpoint.votes.where(user: current_user).first), method: :delete, remote: true %> </button>
+    <% else %>
+      <button type="button" class="btn btn-outline-primary"> <%= link_to "Upvote", fixpoint_votes_path(fixpoint), method: :post, remote: true %> </button>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= fixpoint.votes.count %> VOTES
+</div>
+
+
+

@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :get_fixpoint, only: :create
+  before_action :get_fixpoint
 
   def create
     @vote = Vote.create(fixpoint: @fixpoint, user: current_user)
@@ -8,7 +8,8 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @vote = current_user.votes.find(params[:id])
+    @vote = Vote.find(params[:id])
+    @vote.destroy
     authorize @vote
   end
 
