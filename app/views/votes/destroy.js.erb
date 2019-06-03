@@ -1,0 +1,7 @@
+function refreshVotes(innerHTML) {
+  const newVotesDiv = document.getElementById('votes');
+  newVotesDiv.innerHTML = innerHTML;
+}
+
+
+refreshVotes('<%= j render "shared/votes", fixpoint: @fixpoint %>');
