@@ -1,9 +1,9 @@
 <div>
   <% if user_signed_in? %>
     <% if fixpoint.votes.where(user: current_user).any? %>
-      <button type="button" class="btn btn-outline-primary"> <%= link_to "Downvote", fixpoint_vote_path(fixpoint, fixpoint.votes.where(user: current_user).first), method: :delete, remote: true %> </button>
+      <%= link_to "Downvote", fixpoint_vote_path(fixpoint, fixpoint.votes.where(user: current_user).first), method: :delete, remote: true, class: "btn btn-outline-primary" %>
     <% else %>
-      <button type="button" class="btn btn-outline-primary"> <%= link_to "Upvote", fixpoint_votes_path(fixpoint), method: :post, remote: true %> </button>
+      <%= link_to "Upvote", fixpoint_votes_path(fixpoint), method: :post, remote: true, class: "btn btn-outline-primary" %>
     <% end %>
   <% end %>
 </div>

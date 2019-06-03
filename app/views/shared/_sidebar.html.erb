@@ -25,10 +25,6 @@
       </div>
     </div>
     <div class="bottom-area">
-      <label class="switch">
-        <input class="switch-input" type="checkbox" />
-        <span class="switch-label" data-on="Map" data-off="List"></span>
-        <span class="switch-handle"></span>
         <% if user_signed_in? %>
           <%= link_to destroy_user_session_path, method: :delete, class: 'login-btn btn btn-primary btn-lg btn-block' do %>
             Logout
@@ -38,16 +34,17 @@
             Login
           <% end %>
         <% end %>
-      </div>
     </div>
   </div>
+  </div>
+
   <button class="sidebar-burger btn btn-primary" id="burger" onclick="sidebarOpen()">☰</button>
   <script>
     function sidebarOpen() {
       document.getElementById("mySidebar").style.display = "flex";
       document.getElementById("burger").style.display = "none";
     }
-    
+
     function sidebarClose() {
       document.getElementById("mySidebar").style.display = "none";
       document.getElementById("burger").style.display = "block";
