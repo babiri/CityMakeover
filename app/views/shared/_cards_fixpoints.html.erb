@@ -11,4 +11,10 @@
     <p class="card-text"><%= fixpoint.address %></p>
     <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
   <button type="button" class="btn btn-link"> <%= link_to "Add photos", new_fixpoint_fixpoint_attachment_path(fixpoint) %> </button>
+  <button type="button" class="btn btn-outline-primary"> <%= link_to "Upvote", new_fixpoint_fixpoint_attachment_path(fixpoint) %> </button>
+  <div class="votes">
+    <% votes = Vote.where(fixpoint_id: fixpoint.id).count %>
+    <%= votes %> 👍
+  </div>
+
 </div>

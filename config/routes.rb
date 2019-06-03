@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   resources :fixpoints, except: [:destroy] do
     resources :fixpoint_attachments, except: [:index]
+    resources :votes, only: [:create]
   end
+  resources :votes, only: [:destroy]
 end
