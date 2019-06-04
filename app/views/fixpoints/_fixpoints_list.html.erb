@@ -5,11 +5,7 @@
         <div class="col-3">
           <div class="card_fix">
             <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <% if fixpoint.fixpoint_attachments.present? %>
-                <%= cl_image_tag fixpoint.fixpoint_attachments.first.photo %>
-              <% else %>
-                <%= image_tag('http://res.cloudinary.com/domeafay4/image/upload/v1559217010/rb3iyntwumo23d0vnapt.jpg') %>
-              <% end %>
+              <%= render 'fixpoints/images', fixpoint: fixpoint %>
               <p class="card-status <%= fixpoint.fixed ? 'bg-success' : 'bg-danger' %>"><%= fixpoint.fixed ? 'Fixed' : 'Not fixed' %></p>
               <div class="card-body text-dark">
                 <div class="card-main-header">
