@@ -1,9 +1,22 @@
 <div id="fixpoint_votes_<%= fixpoint.id %>">
   <% if user_signed_in? %>
-    <% if fixpoint.votes.where(user: current_user).any? %>
-      <%= link_to "Downvote", fixpoint_vote_path(fixpoint, fixpoint.votes.where(fixpoint: fixpoint, user: current_user).first), method: :delete, remote: true, class: "btn btn-outline-primary" %>
+    <% if current_user.admin? && !fixpoint.fixed? %>
+      <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true, class: "btn btn-primary" do %>
+        <i class="fas fa-check-circle"></i>
+      <% end %>
     <% else %>
-      <%= link_to "Upvote", fixpoint_votes_path(fixpoint), method: :post, remote: true, class: "btn btn-outline-primary" %>
+      <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true, class: "disabled btn btn-secondary", disabled: true do %>
+        <i class="fas fa-check-circle"></i>
+      <% end %>
+    <% end %>
+    <% if fixpoint.votes.where(user: current_user).any? %>
+      <%= link_to fixpoint_vote_path(fixpoint, fixpoint.votes.where(fixpoint: fixpoint, user: current_user).first), method: :delete, remote: true, class: "btn btn-primary" do %>
+        <i class="fas fa-thumbs-down"></i>
+      <% end %>
+    <% else %>
+      <%= link_to fixpoint_votes_path(fixpoint), method: :post, remote: true, class: "btn btn-primary" do %>
+        <i class="fas fa-thumbs-up"></i>
+      <% end %>
     <% end %>
   <% end %>
 
