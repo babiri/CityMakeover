@@ -7,6 +7,8 @@ class FixpointsController < ApplicationController
 
     if params[:filter] == 'fixed'
       @fixpoints = policy_scope(Fixpoint).where(fixed: true)
+    elsif params[:filter] == 'not-fixed'
+      @fixpoints = policy_scope(Fixpoint).where(fixed: false)
     elsif params[:filter] == 'my-fixes'
       @fixpoints = current_user.fixpoints.where.not(latitude: nil, longitude: nil)
     end
