@@ -11,6 +11,10 @@ class FixpointPolicy < ApplicationPolicy
     new?
   end
 
+  def set_fixed?
+    user.admin?
+  end
+
   def update?
     true
   end
