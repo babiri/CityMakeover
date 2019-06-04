@@ -1,9 +1,9 @@
 class FixpointsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_fixpoint, only: [:show, :edit, :update]
+  before_action :set_fixpoint, only: [:show, :edit, :update, :set_fixed]
 
   def index
-    @fixpoints = policy_scope(Fixpoint)
+    @fixpoints = policy_scope(Fixpoint).order(:created_at)
 
     if params[:filter] == 'fixed'
       @fixpoints = policy_scope(Fixpoint).where(fixed: true)
@@ -59,6 +59,12 @@ class FixpointsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def set_fixed
+    authorize @fixpoint
+    @fixpoint.fixed = true
+    @fixpoint.save
   end
 
   def fixed

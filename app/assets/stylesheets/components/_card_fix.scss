@@ -13,9 +13,19 @@
   }
 
   .card-status {
+    display: flex;
+    justify-content: space-between;
     padding: 3px 10px;
     color: white;
     margin-bottom: 0;
+
+    a {
+      color: white;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
   .card-body {

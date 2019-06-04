@@ -1,7 +1,23 @@
 <div class="card_fix">
   <div class="card">
     <%= render 'fixpoints/images', fixpoint: fixpoint %>
-    <p class="card-status <%= fixpoint.fixed ? 'bg-success' : 'bg-danger' %>"><%= fixpoint.fixed ? 'Fixed' : 'Not fixed' %></p>
+    <div class="card-status <%= fixpoint.fixed ? 'bg-success' : 'bg-danger' %>">
+      <% if current_user.admin? %>
+        <% if fixpoint.fixed? %>
+          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true do %>
+            <i class="far fa-check-square"></i>
+            fixed
+          <% end %>
+        <% else %>
+          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true do %>
+            <i class="far fa-square"></i>
+            fixed
+          <% end %>
+        <% end %>
+      <% else %>
+        <span><%= fixpoint.fixed ? 'Fixed' : 'Not fixed' %></span>
+      <% end %>
+    </div>
     <div class="card-body text-dark">
       <div class="card-main-header">
         <% if fixpoint.user == current_user %>
