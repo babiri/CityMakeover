@@ -2,16 +2,22 @@
   <div class="row">
     <% if !@fixpoints.empty? %>
       <% fixpoints.each do |fixpoint| %>
-        <div class="col-3">
+        <div class="col-4">
           <div class="card_fix">
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card border-dark mb-3">
               <%= render 'fixpoints/images', fixpoint: fixpoint %>
               <p class="card-status <%= fixpoint.fixed ? 'bg-success' : 'bg-danger' %>"><%= fixpoint.fixed ? 'Fixed' : 'Not fixed' %></p>
               <div class="card-body text-dark">
                 <div class="card-main-header">
-                  <div class="user-avatar">
-                    PP
-                  </div>
+                  <% if fixpoint.user == current_user %>
+                    <div class="user-avatar bg-primary">
+                      <%= fixpoint.user.initials %>
+                    </div>
+                  <% else %>
+                    <div class="user-avatar bg-secondary">
+                      <%= fixpoint.user.initials %>
+                    </div>
+                  <% end %>
                   <div>
                     <p><%= fixpoint.address %></p>
                     <p><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>

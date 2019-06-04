@@ -41,5 +41,4 @@ class Fixpoint < ApplicationRecord
 
   validates :category, presence: true
   validates :user, presence: true
-
 end
