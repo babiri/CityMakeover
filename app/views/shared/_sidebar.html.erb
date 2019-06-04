@@ -10,25 +10,33 @@
     <div class="form">
       <div class="form-check">
         <label class="form-check-label">
-          <%= link_to "fixed", fixpoints_path(state: "fixed") %>
+          <%= radio_button_tag :filter, 'all', params[:filter] == 'all', class: 'sidebar-radio' %>
+          All
         </label>
       </div>
+
       <div class="form-check">
         <label class="form-check-label">
-          <%= link_to "Not fixed", fixpoints_path(state: "not-fixed") %>
+          <%= radio_button_tag :filter, 'fixed', params[:filter] == 'fixed', class: 'sidebar-radio' %>
+          Fixed
         </label>
       </div>
+
       <div class="form-check">
         <label class="form-check-label">
-          <%= link_to "my fixes", fixpoints_path(state: "my-fixes") %>
+          <%= radio_button_tag :filter, 'not-fixed', params[:filter] == 'not-fixed', class: 'sidebar-radio' %>
+          Not fixed
+        </label>
+      </div>
+
+      <div class="form-check">
+        <label class="form-check-label">
+          <%= radio_button_tag :filter, 'my-fixes', params[:filter] == 'my-fixes', class: 'sidebar-radio' %>
+          My fixes
         </label>
       </div>
     </div>
     <div class="bottom-area">
-      <label class="switch">
-        <input class="switch-input" type="checkbox" />
-        <span class="switch-label" data-on="Map" data-off="List"></span>
-        <span class="switch-handle"></span>
         <% if user_signed_in? %>
           <%= link_to destroy_user_session_path, method: :delete, class: 'login-btn btn btn-primary btn-lg btn-block' do %>
             Logout
@@ -38,18 +46,31 @@
             Login
           <% end %>
         <% end %>
-      </div>
     </div>
   </div>
+  </div>
+
   <button class="sidebar-burger btn btn-primary" id="burger" onclick="sidebarOpen()">☰</button>
   <script>
     function sidebarOpen() {
       document.getElementById("mySidebar").style.display = "flex";
       document.getElementById("burger").style.display = "none";
     }
-    
+
     function sidebarClose() {
       document.getElementById("mySidebar").style.display = "none";
       document.getElementById("burger").style.display = "block";
     }
+
+    (function() {
+      var radios = document.getElementsByClassName('sidebar-radio');
+
+      Array.prototype.forEach.call(radios, function(radio){
+        radio.addEventListener('click', () => {
+          var searchParams = new URLSearchParams(window.location.search);
+          searchParams.set('filter', radio.value);
+          window.location.search = searchParams.toString();
+        })
+      });
+    })();
   </script>

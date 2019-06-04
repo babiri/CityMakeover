@@ -4,7 +4,6 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.create(fixpoint: @fixpoint, user: current_user)
     authorize @vote
-    # render json: vote
   end
 
   def destroy

@@ -1,8 +1,6 @@
-console.log("vote creates!!!!!!!!!!!");
-
 function refreshVotes(innerHTML) {
-  const newVotesDiv = document.getElementById('votes');
-  newVotesDiv.innerHTML = innerHTML;
+  var newVotesDivMap = document.getElementById('fixpoint_votes_<%= @fixpoint.id %>');
+  newVotesDivMap.innerHTML = innerHTML;
 }
 
 

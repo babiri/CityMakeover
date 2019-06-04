@@ -4,16 +4,13 @@ class FixpointsController < ApplicationController
 
   def index
     @fixpoints = policy_scope(Fixpoint)
-    if params[:state]
-      if params[:state] == "fixed"
-        @fixpoints = policy_scope(Fixpoint).where(fixed: true)
-      elsif params[:state] == "not-fixed"
-        @fixpoints = policy_scope(Fixpoint).where(fixed: false)
-      elsif params[:state] == "my-fixes"
-        @fixpoints = current_user.fixpoints.where.not(latitude: nil, longitude: nil)
-      end
 
+    if params[:filter] == 'fixed'
+      @fixpoints = policy_scope(Fixpoint).where(fixed: true)
+    elsif params[:filter] == 'my-fixes'
+      @fixpoints = current_user.fixpoints.where.not(latitude: nil, longitude: nil)
     end
+
 
     @markers = @fixpoints.map do |fixpoint|
       {
