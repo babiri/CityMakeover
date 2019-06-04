@@ -1,43 +1,28 @@
-<div id="fixpoints-list" class="d-none container">
-  <div class="row">
-    <% if !@fixpoints.empty?  %>
-      <% @fixpoints.each do |fixpoint| %>
-        <div class="col-3">
-          <div class="card-deck">
-            <div class="card_fix">
-              <div class="card border-dark mb-3" style="max-width: 18rem;">
-                <% if fixpoint.fixpoint_attachments.present? %>
-                  <%= cl_image_tag fixpoint.fixpoint_attachments.first.photo %>
-                <% else %>
-                  <%= image_tag('http://res.cloudinary.com/domeafay4/image/upload/v1559217010/rb3iyntwumo23d0vnapt.jpg') %>
-                <% end %>
-                <div class="card-body text-dark">
-                  <p class="card-text"><%= fixpoint.category %></p>
-                  <p class="card-text"><%= fixpoint.address %></p>
-                    <div id="votes-list" class="card-text">
-                      <%= render "shared/votes", fixpoint: fixpoint %>
-                    </div>
-                  <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <h1>No fixpoints</h1>
-    <% end %>
-  </div>
-</div>
-<%= render "map" %>
+<%#= render 'fixpoints_list', fixpoints: @fixpoints %>
+
+<%#= render "map" %>
+
+
+<% if params[:view] == 'list' %>
+  <%= render 'fixpoints_list', fixpoints: @fixpoints %>
+<% else %>
+  <%= render "map" %>
+<% end %>
+
 <div class="plus_button">
   <%= link_to '+', new_fixpoint_path %>
 </div>
+
 <div class="toggle_button">
-  <%= link_to "#", id: "toggle-list" do %>
-    <i class="fas fa-toggle-off"></i>
+  <%= link_to toggle_link, id: "toggle-list" do %>
+    <% if params[:view] == 'list' %>
+      <i class="fas fa-toggle-off"></i>
+    <% else %>
+      <i class="fas fa-toggle-on"></i>
+    <% end %>
   <% end %>
 </div>
+
 <div class="b">
   <%= render 'shared/sidebar' %>
 </div>
