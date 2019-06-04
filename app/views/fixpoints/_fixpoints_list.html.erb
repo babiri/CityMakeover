@@ -1,6 +1,6 @@
 <div id="fixpoints-list" class="container">
   <div class="row">
-    <% if !@fixpoints.empty?  %>
+    <% if !@fixpoints.empty? %>
       <% fixpoints.each do |fixpoint| %>
         <div class="col-3">
           <div class="card_fix">
@@ -12,12 +12,32 @@
               <% end %>
               <p class="card-status <%= fixpoint.fixed ? 'bg-success' : 'bg-danger' %>"><%= fixpoint.fixed ? 'Fixed' : 'Not fixed' %></p>
               <div class="card-body text-dark">
-                <p class="card-text"><%= fixpoint.category %></p>
-                <p class="card-text"><%= fixpoint.address %></p>
-                <div id="votes-list" class="card-text">
+                <div class="card-main-header">
+                  <div class="user-avatar">
+                    PP
+                  </div>
+                  <div>
+                    <p><%= fixpoint.address %></p>
+                    <p><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
+                  </div>
+                </div>
+                <div class="card-main-footer">
+                  <div>
+                    <% if fixpoint.aesthetics? %>
+                      <span class="badge badge-primary"><%= fixpoint.category %></span>
+                    <% end %>
+                    <% if fixpoint.pollution? %>
+                      <span class="badge badge-warning"><%= fixpoint.category %></span>
+                    <% end %>
+                    <% if fixpoint.hazard? %>
+                      <span class="badge badge-danger"><%= fixpoint.category %></span>
+                    <% end %>
+                    <% if fixpoint.accessibility? %>
+                      <span class="badge badge-success"><%= fixpoint.category %></span>
+                    <% end %>
+                  </div>
                   <%= render "shared/votes", fixpoint: fixpoint %>
                 </div>
-                <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
               </div>
             </div>
           </div>
