@@ -1,27 +1,9 @@
 <div id="fixpoints-list" class="container">
   <div class="row">
-    <% if !@fixpoints.empty?  %>
+    <% if !@fixpoints.empty? %>
       <% fixpoints.each do |fixpoint| %>
-        <div class="col-3">
-          <div class="card-deck">
-            <div class="card_fix">
-              <div class="card border-dark mb-3" style="max-width: 18rem;">
-                <% if fixpoint.fixpoint_attachments.present? %>
-                  <%= cl_image_tag fixpoint.fixpoint_attachments.first.photo %>
-                <% else %>
-                  <%= image_tag('http://res.cloudinary.com/domeafay4/image/upload/v1559217010/rb3iyntwumo23d0vnapt.jpg') %>
-                <% end %>
-                <div class="card-body text-dark">
-                  <p class="card-text"><%= fixpoint.category %></p>
-                  <p class="card-text"><%= fixpoint.address %></p>
-                    <div id="votes-list" class="card-text">
-                      <%= render "shared/votes", fixpoint: fixpoint %>
-                    </div>
-                  <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-4">
+          <%= render 'fixpoints/card', fixpoint: fixpoint %>
         </div>
       <% end %>
     <% else %>

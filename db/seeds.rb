@@ -60,6 +60,10 @@ fixpoint9 = Fixpoint.new(latitude: 38.72148564, longitude: -9.13287789, user: Us
 fixpoint9.save!
 fixpoint10 = Fixpoint.new(latitude: 38.70930381, longitude: -9.13917608, user: User.all.sample, category: 3)
 fixpoint10.save!
+
+fixpoint11 = Fixpoint.new(latitude: 34.0835063, longitude: -118.3099882, user: User.all.sample, category: 3, fixed: true)
+fixpoint11.save!
+
 puts "finishing creating fake locations"
 
 puts "creating fake photos"
@@ -83,6 +87,11 @@ photo9 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wires
 photo9.save!
 photo10 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/wires2.jpg"), fixpoint: fixpoint10)
 photo10.save!
+
+photo11 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/gianthole.jpg"), fixpoint: fixpoint11)
+photo11.save!
+photo12 = FixpointAttachment.new(photo: File.open("app/assets/images/photos/giantholefix.jpeg"), fixpoint: fixpoint11)
+photo12.save!
 puts "finishing creating fake photos"
 
 # puts "creating fake "

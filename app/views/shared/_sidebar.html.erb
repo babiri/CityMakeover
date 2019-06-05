@@ -14,21 +14,18 @@
           All
         </label>
       </div>
-
       <div class="form-check">
         <label class="form-check-label">
           <%= radio_button_tag :filter, 'fixed', params[:filter] == 'fixed', class: 'sidebar-radio' %>
           Fixed
         </label>
       </div>
-
       <div class="form-check">
         <label class="form-check-label">
           <%= radio_button_tag :filter, 'not-fixed', params[:filter] == 'not-fixed', class: 'sidebar-radio' %>
           Not fixed
         </label>
       </div>
-
       <div class="form-check">
         <label class="form-check-label">
           <%= radio_button_tag :filter, 'my-fixes', params[:filter] == 'my-fixes', class: 'sidebar-radio' %>
@@ -37,40 +34,41 @@
       </div>
     </div>
     <div class="bottom-area">
-        <% if user_signed_in? %>
-          <%= link_to destroy_user_session_path, method: :delete, class: 'login-btn btn btn-primary btn-lg btn-block' do %>
-            Logout
-          <% end %>
-        <% else %>
-          <%= link_to new_user_session_path, class: "login-btn btn btn-primary btn-lg btn-block" do %>
-            Login
-          <% end %>
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'login-btn btn btn-primary btn-lg btn-block' do %>
+          Logout
         <% end %>
+      <% else %>
+        <%= link_to new_user_session_path, class: "login-btn btn btn-primary btn-lg btn-block" do %>
+          Login
+        <% end %>
+      <% end %>
     </div>
   </div>
-  </div>
-
-  <button class="sidebar-burger btn btn-primary" id="burger" onclick="sidebarOpen()">☰</button>
-  <script>
-    function sidebarOpen() {
-      document.getElementById("mySidebar").style.display = "flex";
-      document.getElementById("burger").style.display = "none";
-    }
-
-    function sidebarClose() {
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("burger").style.display = "block";
-    }
-
-    (function() {
-      var radios = document.getElementsByClassName('sidebar-radio');
-
-      Array.prototype.forEach.call(radios, function(radio){
-        radio.addEventListener('click', () => {
-          var searchParams = new URLSearchParams(window.location.search);
-          searchParams.set('filter', radio.value);
-          window.location.search = searchParams.toString();
-        })
-      });
-    })();
-  </script>
+</div>
+<button class="sidebar-burger btn btn-primary" id="burger" onclick="sidebarOpen()">
+  <i class="fas fa-bars"></i>
+</button>
+<script>
+  function sidebarOpen() {
+    document.getElementById("mySidebar").style.display = "flex";
+    document.getElementById("burger").style.display = "none";
+  }
+  
+  function sidebarClose() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("burger").style.display = "block";
+  }
+  
+  (function() {
+    var radios = document.getElementsByClassName('sidebar-radio');
+  
+    Array.prototype.forEach.call(radios, function(radio){
+      radio.addEventListener('click', () => {
+        var searchParams = new URLSearchParams(window.location.search);
+        searchParams.set('filter', radio.value);
+        window.location.search = searchParams.toString();
+      })
+    });
+  })();
+</script>

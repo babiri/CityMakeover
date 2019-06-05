@@ -1,0 +1,56 @@
+<div class="card_fix">
+  <div class="card">
+    <%= render 'fixpoints/images', fixpoint: fixpoint %>
+    <div class="card-status <%= fixpoint.fixed ? 'bg-success' : 'bg-danger' %>">
+      <% if current_user.admin? %>
+        <% if fixpoint.fixed? %>
+          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true do %>
+            <i class="far fa-check-square"></i>
+            fixed
+          <% end %>
+        <% else %>
+          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true do %>
+            <i class="far fa-square"></i>
+            fixed
+          <% end %>
+        <% end %>
+      <% else %>
+        <span><%= fixpoint.fixed ? 'Fixed' : 'Not fixed' %></span>
+      <% end %>
+    </div>
+    <div class="card-body text-dark">
+      <div class="card-main-header">
+        <% if fixpoint.user == current_user %>
+          <div class="user-avatar bg-primary">
+            <%= fixpoint.user.initials %>
+          </div>
+        <% else %>
+          <div class="user-avatar bg-secondary">
+            <%= fixpoint.user.initials %>
+          </div>
+        <% end %>
+        <div>
+          <p><%= fixpoint.address %></p>
+          <p><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
+        </div>
+      </div>
+      <div class="card-main-footer">
+        <div>
+          <% if fixpoint.aesthetics? %>
+            <span class="badge badge-primary"><%= fixpoint.category %></span>
+          <% end %>
+          <% if fixpoint.pollution? %>
+            <span class="badge badge-warning"><%= fixpoint.category %></span>
+          <% end %>
+          <% if fixpoint.hazard? %>
+            <span class="badge badge-danger"><%= fixpoint.category %></span>
+          <% end %>
+          <% if fixpoint.accessibility? %>
+            <span class="badge badge-success"><%= fixpoint.category %></span>
+          <% end %>
+        </div>
+        <%= render "shared/votes", fixpoint: fixpoint %>
+      </div>
+    </div>
+  </div>
+</div>

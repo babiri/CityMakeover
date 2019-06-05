@@ -3,10 +3,12 @@ class FixpointsController < ApplicationController
   before_action :set_fixpoint, only: [:show, :edit, :update, :set_fixed]
 
   def index
-    @fixpoints = policy_scope(Fixpoint)
+    @fixpoints = policy_scope(Fixpoint).order(:created_at)
 
     if params[:filter] == 'fixed'
       @fixpoints = policy_scope(Fixpoint).where(fixed: true)
+    elsif params[:filter] == 'not-fixed'
+      @fixpoints = policy_scope(Fixpoint).where(fixed: false)
     elsif params[:filter] == 'my-fixes'
       @fixpoints = current_user.fixpoints.where.not(latitude: nil, longitude: nil)
     end
