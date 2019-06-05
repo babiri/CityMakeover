@@ -12,6 +12,7 @@ initMapbox();
 initAutocomplete();
 
 
+
 if(document.querySelector(".fixpoints.index")) {
   let toggleButton = document.querySelector("#toggle-list");
   let fixpointsList = document.querySelector("#fixpoints-list");

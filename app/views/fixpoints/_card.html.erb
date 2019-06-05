@@ -5,12 +5,14 @@
       <% if user_signed_in? %>
       <% if current_user.admin? %>
         <% if fixpoint.fixed? %>
-          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch do %>
+        <!-- Button to Open the Modal -->
+          <%= link_to set_fixed_fixpoint_path(fixpoint),style: '    padding-top: 10px;', method: :patch do %>
             <i class="far fa-check-square"></i>
-            Fixed! - Add photos
+            Fixed!
           <% end %>
+          <%= link_to "Add Photos", '#', { class: 'btn btn-primary', data: { toggle: "modal", target: "#fixpoint_#{fixpoint.id}"}}%>
         <% else %>
-          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch,remote: true do %>
+          <%= link_to set_fixed_fixpoint_path(fixpoint),style: '    padding-top: 10px;', method: :patch,remote: true do %>
             <i class="far fa-square"></i>
             fixed
           <% end %>
