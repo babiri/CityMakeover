@@ -5,12 +5,12 @@
       <% if user_signed_in? %>
       <% if current_user.admin? %>
         <% if fixpoint.fixed? %>
-          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true do %>
+          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch do %>
             <i class="far fa-check-square"></i>
-            fixed
+            Fixed! - Add photos
           <% end %>
         <% else %>
-          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true do %>
+          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch,remote: true do %>
             <i class="far fa-square"></i>
             fixed
           <% end %>
@@ -58,3 +58,4 @@
     </div>
   </div>
 </div>
+

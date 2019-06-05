@@ -14,7 +14,7 @@ class FixpointsController < ApplicationController
     end
 
 
-    @markers = @fixpoints.map do |fixpoint|
+    @markers = @fixpoints.order(:created_at).map do |fixpoint|
       {
         lat: fixpoint.latitude,
         lng: fixpoint.longitude,
@@ -64,7 +64,13 @@ class FixpointsController < ApplicationController
   def set_fixed
     authorize @fixpoint
     @fixpoint.fixed = true
-    @fixpoint.save
+    if @fixpoint.save
+      respond_to do |format|
+        format.html { redirect_to new_fixpoint_fixpoint_attachment_path(@fixpoint) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+        flash[:notice] = "Please add fixed photos :)"
+      end
+    end
   end
 
   def fixed
