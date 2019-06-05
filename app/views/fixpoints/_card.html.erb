@@ -63,8 +63,10 @@
             <span class="badge badge-success"><%= fixpoint.category %></span>
           <% end %>
         </div>
+        <% if user_signed_in? %>
         <% unless current_user.admin? %>
         <%= render "shared/votes", fixpoint: fixpoint %>
+        <% end %>
         <% end %>
       </div>
     </div>
