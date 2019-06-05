@@ -1,6 +1,10 @@
 <div class="card_fix">
   <div class="card">
-    <%= render 'fixpoints/images', fixpoint: fixpoint %>
+    <% if fixpoint.fixed? %>
+     <%= render 'fixpoints/images_fixed', fixpoint: fixpoint %>
+    <% else %>
+     <%= render 'fixpoints/images', fixpoint: fixpoint %>
+    <% end %>
     <div class="card-status <%= fixpoint.fixed ? 'bg-success' : 'bg-danger' %>">
       <% if user_signed_in? %>
       <% if current_user.admin? %>
