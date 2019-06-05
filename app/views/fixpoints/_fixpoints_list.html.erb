@@ -4,6 +4,7 @@
       <% fixpoints.each do |fixpoint| %>
         <div class="col-4">
           <%= render 'fixpoints/card', fixpoint: fixpoint %>
+          <%= render 'photosmodal', fixpoint: fixpoint %>
         </div>
       <% end %>
     <% else %>

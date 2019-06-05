@@ -5,12 +5,14 @@
       <% if user_signed_in? %>
       <% if current_user.admin? %>
         <% if fixpoint.fixed? %>
-          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true do %>
+        <!-- Button to Open the Modal -->
+          <%= link_to set_fixed_fixpoint_path(fixpoint),style: '    padding-top: 10px;', method: :patch do %>
             <i class="far fa-check-square"></i>
-            fixed
+            Fixed!
           <% end %>
+          <%= link_to "Add Photos", '#', { class: 'btn btn-primary', data: { toggle: "modal", target: "#fixpoint_#{fixpoint.id}"}}%>
         <% else %>
-          <%= link_to set_fixed_fixpoint_path(fixpoint), method: :patch, remote: true do %>
+          <%= link_to set_fixed_fixpoint_path(fixpoint),style: '    padding-top: 10px;', method: :patch,remote: true do %>
             <i class="far fa-square"></i>
             fixed
           <% end %>
@@ -35,7 +37,11 @@
         <% end %>
         <div>
           <p><%= fixpoint.address %></p>
+          <% if fixpoint.fixed? %>
+          <p><small class="text-muted">Fixed at <%= time_ago_in_words(fixpoint.updated_at) %> ago</small></p>
+          <% else %>
           <p><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
+          <% end %>
         </div>
       </div>
       <div class="card-main-footer">
@@ -58,3 +64,4 @@
     </div>
   </div>
 </div>
+

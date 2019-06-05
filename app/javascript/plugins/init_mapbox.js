@@ -50,6 +50,12 @@ const initMapbox = () => {
     }
     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
     map.addControl(new mapboxgl.NavigationControl());
+    // const last_element = markers[markers.length - 1];
+    // map.flyTo({
+    // center: [
+    // last_element.lng,
+    // last_element.lat ]
+    // });
   }
 };
 

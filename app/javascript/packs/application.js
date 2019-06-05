@@ -6,7 +6,11 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
+import { initAutocomplete } from '../plugins/init_autocomplete';
+
 initMapbox();
+initAutocomplete();
+
 
 
 if(document.querySelector(".fixpoints.index")) {
