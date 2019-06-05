@@ -1,5 +1,5 @@
 .form-login {
-  background: white;
+  background: rgba(255,255,255,0.7);
   padding: 10px 20px;
   margin-top: 50px;
   border-radius: 3px;
@@ -11,8 +11,13 @@
     margin-bottom: 30px;
     text-align: center;
   }
+
   .btn {
     width: 100%;
     margin-bottom: 20px
   }
+}
+
+.form-title {
+  margin-top: 50px;
 }
