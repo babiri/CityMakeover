@@ -63,7 +63,9 @@
             <span class="badge badge-success"><%= fixpoint.category %></span>
           <% end %>
         </div>
+        <% unless current_user.admin? %>
         <%= render "shared/votes", fixpoint: fixpoint %>
+        <% end %>
       </div>
     </div>
   </div>

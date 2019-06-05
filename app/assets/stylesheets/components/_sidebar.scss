@@ -7,6 +7,7 @@
 
 .sidebar {
   display: flex;
+  z-index: 1;
   flex-direction: column;
   padding: 10px 20px 20px 20px;
   height: 100vh;

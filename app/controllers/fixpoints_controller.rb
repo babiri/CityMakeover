@@ -73,7 +73,7 @@ class FixpointsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to new_fixpoint_fixpoint_attachment_path(@fixpoint) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
-        flash[:notice] = "Please add fixed photos :)"
+        flash[:notice] = "It is really easy to share a photo of the fix. 📸"
       end
     end
   end
@@ -92,7 +92,7 @@ class FixpointsController < ApplicationController
 
   def fixpoint_params
     params.require(:fixpoint).permit(:address, :category, :longitude, :latitude, :fix_date, :fixed,
-      fixpoint_attachments_attributes: [:id, :fixpoint_id, :photo])
+                                     fixpoint_attachments_attributes: [:id, :fixpoint_id, :photo])
   end
 
   def url_for_marker(fixpoint)
