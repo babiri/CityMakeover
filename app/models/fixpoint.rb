@@ -33,17 +33,15 @@ class Fixpoint < ApplicationRecord
 
   after_validation :geocode, :reverse_geocode
 
-  #validates :fixpoint_attachments, :length => { :minimum => 1 }
-  # validates_presence_of :fixpoint_attachments, message: "photo missing"
+  validates :fixpoint_attachments, presence: true
   # validates :latitude, presence: true
   # validates :longitude, presence: true
 
 
-  validates :category, presence: true
-  validates :user, presence: true
-  validates :address, presence: true
+  validates :category, :user, presence: true
+  validates :address, presence: true, if: ->(fp) { !fp.latitude || !fp.longitude }
 
-  validate do |fixpoint|
-    fixpoint.errors.add(:base, "Photo is missing!") if fixpoint.fixpoint_attachments.blank?
-  end
+  # validate do |fixpoint|
+  #   fixpoint.errors.add(:base, "Photo is missing!") if fixpoint.fixpoint_attachments.blank?
+  # end
 end

@@ -38,11 +38,16 @@ class FixpointsController < ApplicationController
   def create
     @fixpoint = Fixpoint.new(fixpoint_params)
     @fixpoint.user = current_user
+
+    if params[:fixpoint_attachments]
+      build_photos
+    else
+      @fixpoint.fixpoint_attachments.build
+    end
+
     authorize @fixpoint
 
     if @fixpoint.save
-      save_photos if params[:fixpoint_attachments]
-
       redirect_to fixpoints_path, notice: 'fixpoint was successfully created.'
     else
       render action: 'new'
@@ -67,23 +72,11 @@ class FixpointsController < ApplicationController
     @fixpoint.save
   end
 
-  def fixed
-    @fixpoints = policy_scope(Fixpoint).where()
-
-    render :index
-  end
-
-  def to_fix
-    @fixpoints = policy_scope(Fixpoint).where()
-
-    render :index
-  end
-
   private
 
-  def save_photos
-    params[:fixpoint_attachments]['photo'].each do |ph|
-      @fixpoint_attachment = @fixpoint.fixpoint_attachments.create!(photo: ph)
+  def build_photos
+    params[:fixpoint_attachments]['photo'].each do |photo|
+      @fixpoint.fixpoint_attachments.build(photo: photo)
     end
   end
 
@@ -92,7 +85,8 @@ class FixpointsController < ApplicationController
   end
 
   def fixpoint_params
-    params.require(:fixpoint).permit(:address, :category, :longitude, :latitude, :fix_date, :fixed, fixpoint_attachments_attributes: [:id, :fixpoint_id, :photo, :fixed])
+    params.require(:fixpoint).permit(:address, :category, :longitude, :latitude, :fix_date, :fixed,
+      fixpoint_attachments_attributes: [:id, :fixpoint_id, :photo])
   end
 
   def url_for_marker(fixpoint)

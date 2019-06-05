@@ -35,6 +35,13 @@
     </div>
     <div class="bottom-area">
       <% if user_signed_in? %>
+        <div class="user-avatar bg-primary">
+          <% if current_user.name.present? %>
+            <%= current_user.initials %>
+          <% else %>
+            <%= current_user.email %>
+          <% end %>
+        </div>
         <%= link_to destroy_user_session_path, method: :delete, class: 'login-btn btn btn-primary btn-lg btn-block' do %>
           Logout
         <% end %>
@@ -54,15 +61,15 @@
     document.getElementById("mySidebar").style.display = "flex";
     document.getElementById("burger").style.display = "none";
   }
-  
+
   function sidebarClose() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("burger").style.display = "block";
   }
-  
+
   (function() {
     var radios = document.getElementsByClassName('sidebar-radio');
-  
+
     Array.prototype.forEach.call(radios, function(radio){
       radio.addEventListener('click', () => {
         var searchParams = new URLSearchParams(window.location.search);
