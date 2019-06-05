@@ -35,7 +35,11 @@
         <% end %>
         <div>
           <p><%= fixpoint.address %></p>
+          <% if fixpoint.fixed? %>
+          <p><small class="text-muted">Fixed at <%= time_ago_in_words(fixpoint.updated_at) %> ago</small></p>
+          <% else %>
           <p><small class="text-muted">Created <%= time_ago_in_words(fixpoint.created_at) %> ago</small></p>
+          <% end %>
         </div>
       </div>
       <div class="card-main-footer">
