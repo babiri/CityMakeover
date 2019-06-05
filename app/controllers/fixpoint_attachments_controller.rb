@@ -13,7 +13,7 @@ class FixpointAttachmentsController < ApplicationController
 
     respond_to do |format|
       if @fixpoint_attachment.save
-        format.html { redirect_to fixpoints_path, view: 'list', notice: 'fixpoint attachment was successfully uploaded' }
+        format.html { redirect_to request.referrer, notice: 'fixpoint attachment was successfully uploaded'}
       else
         format.html { render :new, notice: 'fixpoint attachment error' }
       end
