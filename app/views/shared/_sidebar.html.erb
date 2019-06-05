@@ -5,9 +5,14 @@
       <button type="button" class="close" aria-label="Close" onclick="sidebarClose()">
         <span aria-hidden="true">&times;</span>
       </button>
+      <% if user_signed_in? %>
       <div class="user-avatar bg-primary">
         <%= current_user.initials %>
       </div>
+      <% else %>
+      <div class="user-avatar bg-primary">
+      </div>
+      <% end %>
     </div>
     <div class="sidebar-title">
       <h2>City Makeover</h2>
