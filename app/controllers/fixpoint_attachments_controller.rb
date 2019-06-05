@@ -13,7 +13,7 @@ class FixpointAttachmentsController < ApplicationController
 
     respond_to do |format|
       if @fixpoint_attachment.save
-        format.html { redirect_to fixpoint_path(@fixpoint), notice: 'fixpoint attachment was successfully uploaded' }
+        format.html { redirect_to fixpoints_path, view: 'list', notice: 'fixpoint attachment was successfully uploaded' }
       else
         format.html { render :new, notice: 'fixpoint attachment error' }
       end
@@ -25,15 +25,15 @@ class FixpointAttachmentsController < ApplicationController
   end
 
   def update
-  authorize @fixpoint_attachment
+    authorize @fixpoint_attachment
 
-  respond_to do |format|
-    if @fixpoint_attachment.update(fixpoint_attachment_params)
-      format.html { redirect_to fixpoint_path(@fixpoint), notice: 'fixpoint attachment was successfully updated' }
-    else
-      format.html { render :edit }
+    respond_to do |format|
+      if @fixpoint_attachment.update(fixpoint_attachment_params)
+        format.html { redirect_to fixpoint_path(@fixpoint), notice: 'fixpoint attachment was successfully updated' }
+      else
+        format.html { render :edit }
+      end
     end
-  end
   end
 
   def destroy
@@ -59,4 +59,3 @@ class FixpointAttachmentsController < ApplicationController
     params.require(:fixpoint_attachment).permit(:fixpoint_id, :photo, :fixed).merge( { fixpoint_id: params[:fixpoint_id] } )
   end
 end
-

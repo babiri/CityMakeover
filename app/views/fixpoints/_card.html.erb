@@ -1,6 +1,6 @@
 <div class="card_fix">
   <div class="card">
-    <%= render 'fixpoints/images', fixpoint: fixpoint %>
+     <%= render 'fixpoints/images', fixpoint: fixpoint %>
     <div class="card-status <%= fixpoint.fixed ? 'bg-success' : 'bg-danger' %>">
       <% if user_signed_in? %>
       <% if current_user.admin? %>

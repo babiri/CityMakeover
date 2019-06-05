@@ -1,6 +1,15 @@
 <div id="fixpoint-images-carousel-<%= fixpoint.id %>" class="carousel slide" data-ride="carousel" data-interval="false">
   <div class="carousel-inner">
     <% fixpoint.fixpoint_attachments.each_with_index do |attachment, index| %>
+      <% if fixpoint.fixed? %>
+        <div class="carousel-item <%= fixpoint.fixpoint_attachments.last.id + 1 ? 'active' : '' %>">
+        <%= cl_image_tag fixpoint.fixpoint_attachments.last.photo, class: 'd-block w-100', height: 200 %>
+      </div>
+      <% else %>
+      <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+      <%= cl_image_tag attachment.photo, class: 'd-block w-100', height: 200 %>
+      </div>
+      <% end %>
       <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
         <%= cl_image_tag attachment.photo, class: 'd-block w-100', height: 200 %>
       </div>
