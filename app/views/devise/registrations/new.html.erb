@@ -1,6 +1,12 @@
+<style>
+  body {
+    background-image: url("https://images.unsplash.com/photo-1445346366695-5bf62de05412?ixlib=rb-1.2.1&auto=format&fit=crop&w=1486&q=80")
+  }
+</style>
+
 <div class="container">
   <div class="row justify-content-center">
-    <div class="form-login col-12 col-md-6">
+    <div class="form-login col-12 col-md-6 col-lg-4">
       <h2>Sign up</h2>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
