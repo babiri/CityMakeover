@@ -35,7 +35,7 @@ fermin.save!
 end
 puts "finished creating fake users"
 
-require 'pry-byebug'
+
 
 puts "Creating fake fixpoints and fixpoint attachments"
 
