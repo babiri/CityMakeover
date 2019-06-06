@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="plus_button">
-  <%= link_to '+', new_fixpoint_path %>
+  <%= link_to "+", '#', {data: { toggle: "modal", target: "#fixpoint_new"}}%>
 </div>
 
 <div class="toggle_button">
@@ -26,3 +26,5 @@
 <div class="b">
   <%= render 'shared/sidebar' %>
 </div>
+
+<%= render 'modal_new' %>
