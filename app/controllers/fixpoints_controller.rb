@@ -68,7 +68,11 @@ class FixpointsController < ApplicationController
 
   def set_fixed
     authorize @fixpoint
+    if @fixpoint.fixed == true
+    @fixpoint.fixed = false
+    else
     @fixpoint.fixed = true
+    end
     if @fixpoint.save
       respond_to do |format|
         format.html { redirect_to new_fixpoint_fixpoint_attachment_path(@fixpoint) }
