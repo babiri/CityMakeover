@@ -75,7 +75,7 @@ class FixpointsController < ApplicationController
   def set_fixed
     authorize @fixpoint
 
-    @fixpoint.fixed = true
+    @fixpoint.fixed = !@fixpoint.fixed
 
     if @fixpoint.save
       respond_to do |format|
