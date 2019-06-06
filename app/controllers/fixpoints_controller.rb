@@ -13,13 +13,13 @@ class FixpointsController < ApplicationController
       @fixpoints = current_user.fixpoints.where.not(latitude: nil, longitude: nil)
     end
 
-
     @markers = @fixpoints.order(:created_at).map do |fixpoint|
       {
         lat: fixpoint.latitude,
         lng: fixpoint.longitude,
         infoWindow: render_to_string(partial: "infowindow", locals: { fixpoint: fixpoint }),
-        image_url: url_for_marker(fixpoint)
+        image_url: url_for_marker(fixpoint),
+        newly_created: params[:newly_created_id].to_i == fixpoint.id
       }
     end
   end
@@ -48,7 +48,13 @@ class FixpointsController < ApplicationController
     authorize @fixpoint
 
     if @fixpoint.save
-      redirect_to fixpoints_path, notice: 'fixpoint was successfully created.'
+      path = fixpoints_path(
+        center_lat: @fixpoint.latitude,
+        center_lon: @fixpoint.longitude,
+        newly_created_id: @fixpoint.id
+      )
+
+      redirect_to path, notice: 'fixpoint was successfully created.'
     else
       render action: 'new'
     end
@@ -68,11 +74,9 @@ class FixpointsController < ApplicationController
 
   def set_fixed
     authorize @fixpoint
-    if @fixpoint.fixed == true
-    @fixpoint.fixed = false
-    else
-    @fixpoint.fixed = true
-    end
+
+    @fixpoint.fixed = !@fixpoint.fixed
+
     if @fixpoint.save
       respond_to do |format|
         format.html { redirect_to new_fixpoint_fixpoint_attachment_path(@fixpoint) }
