@@ -34,12 +34,14 @@
           Not fixed
         </label>
       </div>
+      <% if user_signed_in? %>
       <div class="form-check">
         <label class="form-check-label">
           <%= radio_button_tag :filter, 'my-fixes', params[:filter] == 'my-fixes', class: 'sidebar-radio' %>
           My fixes
         </label>
       </div>
+      <% end %>
     </div>
     <div class="bottom-area">
       <% if user_signed_in? %>
@@ -76,6 +78,7 @@
         var searchParams = new URLSearchParams(window.location.search);
         searchParams.set('filter', radio.value);
         window.location.search = searchParams.toString();
+        sidebarOpen();
       })
     });
   })();
