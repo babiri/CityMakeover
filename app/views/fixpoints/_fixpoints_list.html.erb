@@ -16,7 +16,7 @@
   <div class="row">
     <% if !@fixpoints.empty? %>
       <% fixpoints.each do |fixpoint| %>
-        <div class="col-4">
+        <div class="col-sm-12 col-md-6 col-lg-4">
           <%= render 'fixpoints/card', fixpoint: fixpoint %>
           <%= render 'photosmodal', fixpoint: fixpoint %>
         </div>
