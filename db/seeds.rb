@@ -11,13 +11,9 @@ Vote.destroy_all
 FixpointAttachment.destroy_all
 Fixpoint.destroy_all
 User.destroy_all
-
-
-
 User.destroy_all
 Fixpoint.destroy_all
 FixpointAttachment.destroy_all
-
 
 puts 'Creating fake users...'
 

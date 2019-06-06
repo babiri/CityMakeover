@@ -13,7 +13,6 @@ class FixpointsController < ApplicationController
       @fixpoints = current_user.fixpoints.where.not(latitude: nil, longitude: nil)
     end
 
-
     @markers = @fixpoints.order(:created_at).map do |fixpoint|
       {
         lat: fixpoint.latitude,
@@ -68,7 +67,9 @@ class FixpointsController < ApplicationController
 
   def set_fixed
     authorize @fixpoint
+
     @fixpoint.fixed = true
+
     if @fixpoint.save
       respond_to do |format|
         format.html { redirect_to new_fixpoint_fixpoint_attachment_path(@fixpoint) }
