@@ -1,4 +1,18 @@
 <div id="fixpoints-list" class="container">
+  <div class="header">
+    <% if params[:filter] == "my-fixes" %>
+    <h1>My fixpoints</h1>
+    <% elsif params[:filter] == "all" %>
+    <h1>All fixpoints</h1>
+    <% elsif params[:filter] == "not-fixed" %>
+    <h1>Fixpoints that need fixing</h1>
+    <% elsif params[:filter] == "fixed" %>
+    <h1>Fixed fixpoitns</h1>
+    <% else %>
+    <h1>No fixpoints</h1>
+    <% end %>
+  <hr>
+  </div>
   <div class="row">
     <% if !@fixpoints.empty? %>
       <% fixpoints.each do |fixpoint| %>

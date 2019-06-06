@@ -70,6 +70,13 @@
         <% if user_signed_in? %>
         <% unless current_user.admin? %>
         <%= render "shared/votes", fixpoint: fixpoint %>
+        <% else %>
+        <div id="fixpoint_votes_<%= fixpoint.id %>" class="fixpoint-votes">
+        <i class="fas fa-thumbs-up"></i>
+        <span class="count">
+        <%= fixpoint.votes.count %>
+        </span>
+      </div>
         <% end %>
         <% end %>
       </div>
