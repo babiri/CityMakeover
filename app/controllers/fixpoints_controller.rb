@@ -18,7 +18,8 @@ class FixpointsController < ApplicationController
         lat: fixpoint.latitude,
         lng: fixpoint.longitude,
         infoWindow: render_to_string(partial: "infowindow", locals: { fixpoint: fixpoint }),
-        image_url: url_for_marker(fixpoint)
+        image_url: url_for_marker(fixpoint),
+        newly_created: params[:newly_created_id].to_i == fixpoint.id
       }
     end
   end
@@ -47,7 +48,13 @@ class FixpointsController < ApplicationController
     authorize @fixpoint
 
     if @fixpoint.save
-      redirect_to fixpoints_path, notice: 'fixpoint was successfully created.'
+      path = fixpoints_path(
+        center_lat: @fixpoint.latitude,
+        center_lon: @fixpoint.longitude,
+        newly_created_id: @fixpoint.id
+      )
+
+      redirect_to path, notice: 'fixpoint was successfully created.'
     else
       render action: 'new'
     end
