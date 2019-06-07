@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+// import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const mapElement = document.getElementById('map');
 
@@ -63,7 +63,7 @@ const initMapbox = () => {
       map.flyTo({ center: [centerLon, centerLat], zoom: 18 });
     }
 
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
+    // map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
     map.addControl(new mapboxgl.NavigationControl());
     // const last_element = markers[markers.length - 1];
     // map.flyTo({
