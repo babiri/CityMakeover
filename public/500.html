@@ -1,66 +1,165 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>500</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
+
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+    @use postcss-cssnext;
+/* helpers/align.css */
+
+.align {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* helpers/animation.css */
+
+.animation {
+  animation-duration: 0.6s;
+  animation-fill-mode: both;
+}
+
+.animation--reverse {
+  animation-direction: reverse;
+}
+
+/* helpers/animation-shake.css */
+
+@keyframes shake-vertical {
+
+  15%,
+  45%,
+  75% {
+    transform: translateY(-0.75rem);
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  30%,
+  60% {
+    transform: translateY(0.75rem);
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+.animation--shake--vertical {
+  animation-name: shake-vertical;
+  will-change: transform;
+}
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+:root {
+  --grid-max-width: 40rem;
+  --grid-width: 90%;
+  --grid-gutter: 3%;
+}
+
+.grid {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--grid-max-width);
+  width: var(--grid-width);
+}
+
+.grid__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(var(--grid-gutter) / -2);
+}
+
+.grid__col {
+  margin: calc(var(--grid-gutter) / 2);
+  flex-grow: 1;
+}
+
+/* layout/base.css */
+
+:root {
+  --html-font-size: 100%;
+
+  --body-background-color: #f9f8f5;
+  --body-color: #353535;
+  --body-font-family: 'Roboto';
+  --body-font-family-fallback: sans-serif;
+  --body-font-size: 1rem;
+  --body-font-weight: 400;
+  --body-line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: var(--html-font-size);
+  height: 100%;
+}
+
+body {
+  background-color: var(--body-background-color);
+  color: var(--body-color);
+  font-family: var(--body-font-family), var(--body-font-family-fallback);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  margin: 0;
+  min-height: 100%;
+}
+
+/* modules/box.css */
+
+:root {
+  --box-background-color: #fff;
+  --box-padding-horizontal: 2rem;
+  --box-padding-vertical: 3rem;
+}
+
+.box {
+  background-color: var(--box-background-color);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+  font-size: 6.25rem;
+  padding-bottom: var(--box-padding-vertical);
+  padding-left: var(--box-padding-horizontal);
+  padding-right: var(--box-padding-horizontal);
+  padding-top: var(--box-padding-vertical);
+  text-align: center;
+}
+
   </style>
-</head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+  </head>
+
+  <body class="align">
+
+    <div class="grid">
+
+      <div class="grid__row">
+
+        <div class="grid__col">
+          <div class="box animation animation--shake--vertical">5</div>
+        </div>
+
+        <div class="grid__col">
+          <div class="box animation animation--reverse animation--shake--vertical">0</div>
+        </div>
+
+        <div class="grid__col">
+          <div class="box animation animation--shake--vertical">0</div>
+        </div>
+
+      </div>
+
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+
+  </body>
+
 </html>
