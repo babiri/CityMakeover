@@ -1,1 +1,1 @@
-Rails app generated created by the Pedro, Fermin, and Luis.
+CityMakeover 'Rails' app created by Pedro, Fermin, and Luis.
